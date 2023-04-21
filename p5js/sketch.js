@@ -2,6 +2,8 @@ let newCanvas;
 let canvasWidth = 1000;
 let canvasHeight = 500;
 let img;
+let img2;
+let images;
 let imageOneXPosition;
 let imageOneYPosition;
 
@@ -32,6 +34,9 @@ let detailsBoxThree = new Shape(0, 0, 200, 70, textArray[0]);
 
 function preload(){
   img = loadImage('https://i.ibb.co/Z2R4FTq/image.png');
+  img2 = loadImage('https://i.ibb.co/7GXRMMy/image.png');
+
+  images = [img, img2];
 }
 
 function setup() {
@@ -56,6 +61,7 @@ function draw() {
   
   // detail box 01
   noFill();
+  strokeWeight(1)
   stroke(255);
   squareOne.xValue = random((width)/2, (width)/3);
   squareOne.yValue = random(30, 60);
@@ -66,7 +72,7 @@ function draw() {
     squareOne.height + random (20, 40));
 
   stroke(255);
-  strokeWeight(2);
+  strokeWeight(1);
   detailsBoxOne.xValue = random(0, 20);
   detailsBoxOne.yValue = random(0, 20);
   rect(
@@ -86,7 +92,7 @@ function draw() {
 
   noFill();
   stroke(255);
-  strokeWeight(1.5);
+  strokeWeight(1);
   line(
     detailsBoxOne.width + detailsBoxOne.xValue, 
     detailsBoxOne.height + detailsBoxOne.yValue, 
@@ -107,7 +113,7 @@ function draw() {
 
   noFill();
   stroke(255);
-  strokeWeight(2);
+  strokeWeight(1);
   detailsBoxTwo.xValue = random((width-200)-100, (width-200)-20);
   detailsBoxTwo.yValue = random(height*.1, height*.3);
   rect(
@@ -127,7 +133,7 @@ function draw() {
 
   noFill();
   stroke(255);
-  strokeWeight(1.5);
+  strokeWeight(1);
   line(
     detailsBoxTwo.xValue, 
     detailsBoxTwo.yValue, 
@@ -147,7 +153,7 @@ function draw() {
 
   noFill();
   stroke(255);
-  strokeWeight(2);
+  strokeWeight(1);
   detailsBoxThree.xValue = random(width-300, width-400);
   detailsBoxThree.yValue = random(height-100, height-200);
   rect(
@@ -167,7 +173,7 @@ function draw() {
 
   noFill();
   stroke(255);
-  strokeWeight(1.5);
+  strokeWeight(1);
   line(
     detailsBoxThree.xValue, 
     detailsBoxThree.yValue, 
@@ -177,13 +183,31 @@ function draw() {
 
     imageOneXPosition = random(100);
     imageOneYPosition = random(200);
-    image(img, imageOneXPosition, imageOneYPosition, width*.12, height*.40);
+    image(
+      images[1], 
+      imageOneXPosition, 
+      imageOneYPosition, 
+      width*.12, 
+      height*.40);
     stroke(255);
     line(
       (width*.12)/2 + imageOneXPosition, 
       (height*.40)/2 + imageOneYPosition, 
       squareTwo.xValue, 
       squareTwo.yValue);
+    
+    strokeWeight(1);
+    circle(
+      (width*.12)/2 + imageOneXPosition, 
+      (height*.40)/2 + imageOneYPosition, 
+      40);
+
+    fill(255);
+    circle(
+      (width*.12)/2 + imageOneXPosition, 
+      (height*.40)/2 + imageOneYPosition, 
+      6);
+    
 }
 
 
