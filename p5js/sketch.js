@@ -6,6 +6,8 @@ let img2;
 let images;
 let imageOneXPosition;
 let imageOneYPosition;
+let imageTwoXPosition;
+let imageTwoYPosition;
 
 let textArray = ["It's difficult to find examples of lorem ipsum in use before Letraset made it popular" + 
 "ipsum in use before Letraset made it popular"];
@@ -184,9 +186,40 @@ function draw() {
     imageOneXPosition = random(100);
     imageOneYPosition = random(200);
     image(
-      images[1], 
+      images[int(random(0, 2))], 
       imageOneXPosition, 
       imageOneYPosition, 
+      width*.12, 
+      height*.40);
+    stroke(255);
+    line(
+      (width*.12)/2 + imageOneXPosition, 
+      (height*.40)/2 + imageOneYPosition, 
+      squareTwo.xValue, 
+      squareTwo.yValue);
+    
+    strokeWeight(1);
+    circle(
+      (width*.12)/2 + imageOneXPosition, 
+      (height*.40)/2 + imageOneYPosition, 
+      40);
+
+    fill(255);
+    circle(
+      (width*.12)/2 + imageOneXPosition, 
+      (height*.40)/2 + imageOneYPosition, 
+      6);
+
+
+    imageTwoXPosition = random(500, 800);
+    imageTwoYPosition = random(600);
+
+    // console.log(int(random(0, 2)));
+
+    image(
+      images[int(random(0, 2))], 
+      imageTwoXPosition, 
+      imageTwoYPosition, 
       width*.12, 
       height*.40);
     stroke(255);
