@@ -4,14 +4,13 @@ let canvasHeight = 500;
 let img;
 let img2;
 let images;
-let imageOneXPosition;
-let imageOneYPosition;
-let imageTwoXPosition;
-let imageTwoYPosition;
+let textArray = [];
 
-let textArray = ["It's difficult to find examples of lorem ipsum in use before Letraset made it popular" + 
-"ipsum in use before Letraset made it popular"];
+// let textArray = ["It's difficult to find examples of lorem ipsum in use before Letraset made it popular" + 
+// "ipsum in use before Letraset made it popular"];
 
+
+// text box class
 class Shape {
   xValue;
   yValue;
@@ -30,9 +29,31 @@ class Shape {
 let squareOne = new Shape(0, 0, 50, 50);
 let squareTwo = new Shape(0, 0, 50, 50);
 let squareThree = new Shape(0, 0, 50, 50);
-let detailsBoxOne = new Shape(0, 0, 200, 70, textArray[0]);
-let detailsBoxTwo = new Shape(0, 0, 200, 70, textArray[0]);
-let detailsBoxThree = new Shape(0, 0, 200, 70, textArray[0]);
+let detailsBoxOne = new Shape(0, 0, 200, 70);
+let detailsBoxTwo = new Shape(0, 0, 200, 70);
+let detailsBoxThree = new Shape(0, 0, 200, 70);
+
+
+// image (preview) class  
+class Preview{
+  img;
+  xValue;
+  yValue;
+  width;
+  height;
+
+  constructor(xValue, yValue, width, height, img){
+    this.img = img;
+    this.xValue = xValue;
+    this.yValue = yValue;
+    this.width = width;
+    this.height = height;
+  }
+}
+
+let imagePreviewOne = new Preview(0, 0, canvasWidth*.14, canvasHeight*.40);
+let imagePreviewTwo = new Preview(0, 0, canvasWidth*.14, canvasHeight*.40);
+
 
 function preload(){
   img = loadImage('https://i.ibb.co/Z2R4FTq/image.png');
@@ -40,6 +61,19 @@ function preload(){
 
   images = [img, img2];
 }
+
+
+// fetching dataset
+async function getJSONData(){
+  const response = await fetch('../data/chat_data.json');
+  const jsonData = await response.json();
+  
+  for (let i = 0; i < jsonData.length; i++) {
+    textArray.push(jsonData[i].message);
+  }
+}
+getJSONData();
+
 
 function setup() {
   newCanvas = createCanvas(canvasWidth, canvasHeight);
@@ -56,10 +90,6 @@ function draw() {
   stroke(255);
   strokeWeight(2);
 
-  // noFill();
-  // stroke(255, 0, 0);
-  // rect(0, 0, canvasWidth, canvasHeight );
-  
   
   // detail box 01
   noFill();
@@ -86,6 +116,7 @@ function draw() {
   noStroke();
   fill(255);
   textSize(10);
+  detailsBoxOne.text = textArray[int(random(0, 188000))];
   text(
     detailsBoxOne.text,
     10 + detailsBoxOne.xValue, 
@@ -127,6 +158,7 @@ function draw() {
   noStroke();
   fill(255);
   textSize(10);
+  detailsBoxTwo.text = textArray[int(random(0, 188000))];
   text(
     detailsBoxTwo.text,
     10 + detailsBoxTwo.xValue, 
@@ -167,6 +199,7 @@ function draw() {
   noStroke();
   fill(255);
   textSize(10);
+  detailsBoxThree.text = textArray[int(random(0, 188000))];
   text(
     detailsBoxThree.text,
     10 + detailsBoxThree.xValue, 
@@ -182,63 +215,63 @@ function draw() {
     squareThree.xValue + squareThree.width, 
     squareThree.yValue + squareThree.height); 
 
-
-    imageOneXPosition = random(100);
-    imageOneYPosition = random(200);
+    imagePreviewOne.xValue = random(100);
+    imagePreviewOne.yValue = random(200);
+    imagePreviewOne.img = images[int(random(0, 2))];
     image(
-      images[int(random(0, 2))], 
-      imageOneXPosition, 
-      imageOneYPosition, 
-      width*.12, 
-      height*.40);
+      imagePreviewOne.img, 
+      imagePreviewOne.xValue, 
+      imagePreviewOne.yValue, 
+      imagePreviewOne.width, 
+      imagePreviewOne.height);
+
     stroke(255);
     line(
-      (width*.12)/2 + imageOneXPosition, 
-      (height*.40)/2 + imageOneYPosition, 
+      (width*.12)/2 + imagePreviewOne.xValue, 
+      (height*.40)/2 + imagePreviewOne.yValue, 
       squareTwo.xValue, 
       squareTwo.yValue);
     
     strokeWeight(1);
     circle(
-      (width*.12)/2 + imageOneXPosition, 
-      (height*.40)/2 + imageOneYPosition, 
+      (width*.12)/2 + imagePreviewOne.xValue, 
+      (height*.40)/2 + imagePreviewOne.yValue, 
       40);
 
     fill(255);
     circle(
-      (width*.12)/2 + imageOneXPosition, 
-      (height*.40)/2 + imageOneYPosition, 
+      (width*.12)/2 + imagePreviewOne.xValue, 
+      (height*.40)/2 + imagePreviewOne.yValue, 
       6);
 
 
-    imageTwoXPosition = random(500, 800);
-    imageTwoYPosition = random(600);
-
-    // console.log(int(random(0, 2)));
-
+    imagePreviewTwo.xValue = random(500, 800);
+    imagePreviewTwo.yValue = random(0, 300);
     image(
       images[int(random(0, 2))], 
-      imageTwoXPosition, 
-      imageTwoYPosition, 
-      width*.12, 
-      height*.40);
+      imagePreviewTwo.xValue, 
+      imagePreviewTwo.yValue, 
+      imagePreviewTwo.width, 
+      imagePreviewTwo.height);
+
     stroke(255);
     line(
-      (width*.12)/2 + imageOneXPosition, 
-      (height*.40)/2 + imageOneYPosition, 
-      squareTwo.xValue, 
-      squareTwo.yValue);
+      (width*.12)/2 + imagePreviewTwo.xValue, 
+      (height*.40)/2 + imagePreviewTwo.yValue, 
+      squareOne.xValue, 
+      squareOne.yValue);
     
+    noFill()
     strokeWeight(1);
     circle(
-      (width*.12)/2 + imageOneXPosition, 
-      (height*.40)/2 + imageOneYPosition, 
+      (width*.12)/2 + imagePreviewTwo.xValue, 
+      (height*.40)/2 + imagePreviewTwo.yValue, 
       40);
 
     fill(255);
     circle(
-      (width*.12)/2 + imageOneXPosition, 
-      (height*.40)/2 + imageOneYPosition, 
+      (width*.12)/2 + imagePreviewTwo.xValue, 
+      (height*.40)/2 + imagePreviewTwo.yValue, 
       6);
     
 }
