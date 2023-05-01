@@ -1,0 +1,228 @@
+@font-face {
+    font-family: "GrandSlang-Roman";
+    src: url(../fonts/GrandSlang-Roman.ttf);
+}
+
+
+body {
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    overflow: hidden !important; /* disable scrolling / rubberband effect on mobile */
+}
+
+#glcanvas {
+    display: block;
+    position: absolute;
+    outline:0;
+    z-index: 0;
+    top: 0;
+}
+
+* {
+    /* disable on touch highlights of html elements, especially on mobile! */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* heading stylings */
+#heading{
+    position: absolute;
+    height: auto;
+    margin-left: 25px;
+    margin-top: 25px;
+    z-index: 1;
+}
+#heading h1{
+    font-family: "GrandSlang-Roman";
+    text-transform: uppercase;
+    font-size: 55px;
+    font-weight: normal;
+    /* background-color: darkblue; */
+    margin-top: 0;
+    line-height: 1;
+}
+#heading span{
+    /* background-color: darkgreen; */
+    font-size: 22px;
+    font-family: "GrandSlang-Roman";
+    border: 1px solid white;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 55px;
+}
+/* end of heading stylings */
+
+
+/* sticker stylings */
+#sticker{
+    width: 13%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+/* end of sticker stylings */
+
+
+/* barcode sticker stylings */
+#bar-code-sticker{
+    position: absolute;
+    width: 10.5%;
+    left: 30px;
+    top: calc(100*.52vh );
+    z-index: 1;
+}
+/* end of barcode sticker stylings */
+
+
+/* date time stylings */
+#date-time{
+    position: absolute;
+    z-index: 1;
+    font-family: "GrandSlang-Roman";
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: .3;
+    text-align: right;
+    right: 25px;
+    top: calc(100*.45vh);
+}
+/* end of date time stylings */
+
+
+/* footer stylings */
+#footer{
+    position: absolute;
+    width: 95%;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 0;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    font-family: "GrandSlang-Roman";
+    text-transform: uppercase;
+    font-size: 20px;
+    z-index: 2;
+}
+#footer p:first-child{
+    position: absolute;
+    left: 0;
+}
+#footer p:nth-child(2){
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+}
+#footer a{
+    text-decoration: none;
+    color: white;
+}
+#footer p:nth-child(3){
+    position: absolute;
+    /* transform: translateX(-50%); */
+    right: 0;
+}
+/* end of footer stylings */
+
+
+/* dotted stylings */
+.dotted-styles{
+    background: none;
+    height: calc(100*.9vh);
+    position: absolute;
+    width: 30%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    opacity: 1;
+    font-family: "GrandSlang-Roman";
+}
+.dotted-styles ul{
+    display: flex;
+    list-style: none;
+    position: absolute;
+    padding-left: 0;
+    transform: translateX(-50%);
+    left: 50%;
+}
+.dotted-styles ul:nth-child(1){
+    top: calc(0vh);
+}
+.dotted-styles ul:nth-child(2){
+    top: calc(100*.20vh);
+}
+.dotted-styles ul:nth-child(3){
+    top: calc(100*.40vh);
+}
+.dotted-styles ul:nth-child(4){
+    top: calc(100*.60vh);
+}
+.dotted-styles ul:nth-child(5){
+    top: calc(100*.80vh);
+}
+.dotted-styles ul li:nth-child(2){
+    margin-left: 10vw;
+}
+.dotted-styles ul li:nth-child(3){
+    margin-left: 10vw;
+}
+.dotted-styles ul li:nth-child(4){
+    margin-left: 10vw;
+}
+.dotted-styles ul li:nth-child(5){
+    margin-left: 10vw;
+}
+/* end of dotted stylings */
+
+
+/* sidebar stylings */
+.sidebar-cables{
+    display: none;
+}
+/* end of sidebar stylings */
+
+
+/* loader stylings */
+/* #loader-circle{
+    position: fixed;
+    z-index: 5;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    background-color: black;
+    border-radius: 50%;
+    animation: loaderAnimation 10s ease-out;
+}
+@keyframes loaderAnimation {
+    0%{ 
+        width: 200vw;
+        height: 200vw;
+    }
+    20%{top: 50%;}
+    30%{
+        width: 10px;
+        height: 10px;
+    }
+    90%{
+        width: 10px;
+        height: 10px;
+    }
+    100%{
+        width: 0px;
+        height: 0px;
+    }
+} */
+/* end of loader stylings */
